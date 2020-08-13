@@ -49,5 +49,26 @@ function parseDate(date, pattern) {
             default: return ''
         }
     })
-} 
-console.log(parseDate('2020-01-01'))
+}
+
+/**
+ * @name 近一年
+ * @param {String} pattern  'yyyy-MM-dd'
+ */
+function getLastYear(pattern) {
+    const NOW = new Date()
+    let result = [],
+        month = NOW.getMonth() + 2,
+        year = NOW.getFullYear() - 1 // 去年开始
+    while (result.length < 12) {
+        let m = month % 12
+        if (m === 0) m = 12
+        if (m === 1) year++
+        let date = year + '-' + m
+        result.push(parseDate(date, pattern))
+        month++
+    }
+    return result
+}
+
+console.log(getLastYear('yyyy/MM'));

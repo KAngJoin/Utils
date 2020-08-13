@@ -1,10 +1,10 @@
 /**
- * @name 获取某个月是多少天
+ * @name 天/月
  * @param {String} _date 
  * @returns {Number} day
  * @description 传入一个合法的日期，返回该日期所属月份一个多少天
  */
-function daysOfTheMonth(_date) {
+function daysPerMonth(_date) {
     const NOW = new Date(_date)
     if (NOW.toString() === 'Invalid Date') throw TypeError('Incorrect date format.')
     //当前月
@@ -23,7 +23,7 @@ function daysOfTheMonth(_date) {
 let m1 = '2020-02'  // 某一月
 let m2 = '2020-04-01' // 具体某一天
 let m3 = new Date() // 当前月
-console.log(daysOfTheMonth(m1)) // 29
-console.log(daysOfTheMonth(m2)) // 30
-console.log(daysOfTheMonth(m3)) // 31
+console.log(daysPerMonth(m1)) // 29
+console.log(daysPerMonth(m2)) // 30
+console.log(daysPerMonth(m3)) // 31
 

@@ -1,11 +1,12 @@
+
 const DEFAULT_FORMAT = 'yyyy-MM-dd ',
     SIGN_REGEXP = /([yMdhsm])\1*/g
 
 /**
- * @description 补零
- * @param {String} string 
- * @param {Number} length 
- */
+* @description 补零
+* @param {String} string 
+* @param {Number} length 
+*/
 function padding(string, length) {
     const LEN = length - String(string).length
     for (let i = 0; i < LEN; i++) {
@@ -14,10 +15,10 @@ function padding(string, length) {
     return string
 }
 /**
- * 
- * @param {Date} date 
- * @param {String} pattern 
- */
+* 
+* @param {Date} date 
+* @param {String} pattern 
+*/
 function parseDate(date, pattern) {
     let format = pattern || DEFAULT_FORMAT;
     const DATE = new Date(date);
@@ -49,31 +50,22 @@ function parseDate(date, pattern) {
 }
 
 /**
- * @description 传入某一天时间格式的值，返回这一周的日期数组
- * @param {yyyy-MM-dd} time 
- * @returns {Array}
+ * @name 今年
+ * @returns {Array} []
  */
-function getThisWeek(date, pattern) {
-    const NOW = new Date(date)
-    if (NOW.toString() === 'Invalid Date') throw TypeError('Incorrect date format.')
-    const WEEK = NOW.getDay() || 7, // 一周的第几天(1,2,3,4,5,6,0),若为0返回7
-        TODAY = NOW.getDate(),    // 本月的第几天
-        NOW_M = NOW.getMonth(), // 那一月 从 0（1月）到 11（12月）
-        NOW_Y = NOW.getFullYear(), // 那一年
-        CURRENT = Date.parse(new Date(NOW_Y, NOW_M, TODAY)), // time的毫秒数
-        DAY = 24 * 60 * 60 * 1000
+function getThisYear(pattern) {
+    const NOW = new Date(),
+        Y = NOW.getFullYear()
     let result = []
-    for (let i = 1; i <= 7; i++) {
-        let time = WEEK - i,
-            cur = CURRENT - (time * DAY)
+    for (let i = 1; i <= 12; i++) {
+        let date = Y + '-' + i
         result.push({
-            which: i, // which day of the week
-            date: parseDate(cur, pattern)
+            month: parseDate(date, pattern)
         })
     }
     return result
 }
 
-let thisWeek = getThisWeek('2020-09-11', 'yyyy-MM-dd')
-console.log(thisWeek);
-// > ['2020-11-02','2020-11-03','2020-11-04','2020-11-05','2020-11-06','2020-11-07','2020-11-08']
+console.log(getThisYear('yyyy/MM/dd hh:mm:ss'));
+
+

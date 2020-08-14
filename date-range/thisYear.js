@@ -1,12 +1,6 @@
 
 const DEFAULT_FORMAT = 'yyyy-MM-dd ',
     SIGN_REGEXP = /([yMdhsm])\1*/g
-
-/**
-* @description 补零
-* @param {String} string 
-* @param {Number} length 
-*/
 function padding(string, length) {
     const LEN = length - String(string).length
     for (let i = 0; i < LEN; i++) {
@@ -14,11 +8,6 @@ function padding(string, length) {
     }
     return string
 }
-/**
-* 
-* @param {Date} date 
-* @param {String} pattern 
-*/
 function parseDate(date, pattern) {
     let format = pattern || DEFAULT_FORMAT;
     const DATE = new Date(date);
@@ -65,7 +54,3 @@ function getThisYear(pattern) {
     }
     return result
 }
-
-console.log(getThisYear('yyyy/MM/dd hh:mm:ss'));
-
-

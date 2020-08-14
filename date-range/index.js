@@ -9,7 +9,7 @@ var DateRange = (function () {
     function dateRange(time) {
 
         this.getThisWeek = function () {
-            
+
         }
 
 
@@ -19,3 +19,4 @@ var DateRange = (function () {
     }
     return dateRange
 })()
+
